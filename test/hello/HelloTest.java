@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.MessageFormat;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +14,7 @@ public class HelloTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Hello.print();
-        assertTrue(out.toString().toLowerCase().contains("hello world"));
+        String output = out.toString();
+        assertTrue(MessageFormat.format("The output ''{}'' did contain 'hello world'",output), output.toLowerCase().contains("hello world"));
     }
 }
